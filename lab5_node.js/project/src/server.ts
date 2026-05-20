@@ -6,7 +6,7 @@ import mongoose from "mongoose";
 import { connectDB, closeDB } from "./config/database";
 
 const PORT = process.env.PORT || 3000;
-const breakMyCiPipeline: number = "Це текст, а не число!";
+
 
 app.get('/health', (req, res) => {
     const isConnected = mongoose.connection.readyState === 1;
