@@ -19,7 +19,7 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
-          # Вказуємо шлях до package.json, бо він лежить глибоко
+          
           cache-dependency-path: lab5_node.js/project/package-lock.json
 
       - name: Install dependencies
