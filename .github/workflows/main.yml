@@ -1,0 +1,38 @@
+name: Node.js CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+          # Вказуємо шлях до package.json, бо він лежить глибоко
+          cache-dependency-path: lab5_node.js/project/package-lock.json
+
+      - name: Install dependencies
+        run: |
+          cd lab5_node.js/project
+          npm ci
+
+      - name: Run Build
+        run: |
+          cd lab5_node.js/project
+          npm run build
+
+      - name: Run Tests with Coverage
+        run: |
+          cd lab5_node.js/project
+          npm run test:coverage
